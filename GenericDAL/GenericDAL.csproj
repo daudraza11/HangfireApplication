@@ -136,6 +136,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="GenericDB\CommonDAL.cs" />
     <Compile Include="GenericDB\DALHelperOracle.cs" />
+    <Compile Include="GenericDB\DALHelperSQL.cs" />
     <Compile Include="GenericDB\DBConnectionBroker.cs" />
     <Compile Include="GenericDB\DBConnectionBrokerHangfire.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -58,7 +58,7 @@ namespace Hangfire.Business
         public const string PushInterpayTransactions = "PUSH_INTERPAY_TRANSACTIONS";
         public const string PushDirectDebitTransactions = "PUSH_DIRECT_DEBIT_TRANSACTIONS";
         public const string PushAccessBankTransfer = "PUSH_ACCESS_BANK_TRANSFERS"; 
-
+        public const string GenerateBIMAReportFiles = "GENERATE_BIMA_REPORT_FILES"; 
 
     }
 

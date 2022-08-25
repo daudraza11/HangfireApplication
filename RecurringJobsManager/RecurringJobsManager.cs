@@ -14,12 +14,20 @@ namespace Hangfire.Jobs
         {
             //var jobs = new InterpayAfricaJobs();
             //jobs.PushDirectDebitTransactions();
-        } 
-        public void PUSH_ACCESS_BANK_TRANSFERS()
-        {
-            //var jobs = new InterpayAfricaJobs();
-            //jobs.PushDirectDebitTransactions();
         }
-        
+        public void GenerateBimaFiles()
+        {
+            try
+            {
+                new ReportBE().GetCustomersV1Data();
+                new ReportBE().GetCustomersV3Data();
+                new ReportBE().GetCustomersV4Data();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

@@ -17,8 +17,7 @@ namespace Hangfire.JobsTrigger
         {
             {JobCodes.RefreshRecurringJobs,() => new RecurringJobs().RefreshRecurringJobs()},
             {JobCodes.PushDirectDebitTransactions, () => new RecurringJobsManager().PushDirectDebitTransactions()},
-            {JobCodes.PushAccessBankTransfer, () => new RecurringJobsManager().PUSH_ACCESS_BANK_TRANSFERS()},
-            
+            {JobCodes.GenerateBIMAReportFiles,()=>new RecurringJobsManager().GenerateBimaFiles() }
         };
 
         public static void RegisterRecurringJobs(int instanceNumber = -1)

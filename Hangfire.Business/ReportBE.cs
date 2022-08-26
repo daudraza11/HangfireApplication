@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Hosting;
 
 namespace Hangfire.Business
 {
@@ -19,8 +20,8 @@ namespace Hangfire.Business
             string fileExtension = ".csv";
             string fileWithExtension = FileName + fileExtension;
 
-            string PathOfFile = System.Web.HttpContext.Current.Server.MapPath(("~/Contents/Cus1/")) + FileName;
-            string directoryPath = System.Web.HttpContext.Current.Server.MapPath(("~/Contents/Cus1/"));
+            string PathOfFile = HostingEnvironment.MapPath(("~/Contents/BIMAFile/")) + FileName;
+            string directoryPath = HostingEnvironment.MapPath(("~/Contents/BIMAFile/"));
 
             new ZipWriterManager().FileDirectoryPath(directoryPath, FileName);
             var zipBytes = GenericExportFile(directoryPath, FileName, PathOfFile, dt);
@@ -34,9 +35,9 @@ namespace Hangfire.Business
             string fileExtension = ".csv";
             string fileWithExtension = FileName + fileExtension;
 
-            string PathOfFile = System.Web.HttpContext.Current.Server.MapPath(("~/Contents/Cus3/")) + FileName;
-            string directoryPath = System.Web.HttpContext.Current.Server.MapPath(("~/Contents/Cus3/"));
-    
+            string PathOfFile = HostingEnvironment.MapPath(("~/Contents/BIMAFile/")) + FileName;
+            string directoryPath = HostingEnvironment.MapPath(("~/Contents/BIMAFile/"));
+
             var zipBytes = GenericExportFile(directoryPath, FileName, PathOfFile, dt);
             return zipBytes;
         }
@@ -48,8 +49,8 @@ namespace Hangfire.Business
             string fileExtension = ".csv";
             string fileWithExtension = FileName + fileExtension;
 
-            string PathOfFile = System.Web.HttpContext.Current.Server.MapPath(("~/Contents/Cus4/")) + FileName;
-            string directoryPath = System.Web.HttpContext.Current.Server.MapPath(("~/Contents/Cus4/"));
+            string PathOfFile = HostingEnvironment.MapPath(("~/Contents/BIMAFile/")) + FileName;
+            string directoryPath = HostingEnvironment.MapPath(("~/Contents/BIMAFile/"));
 
             var zipBytes = GenericExportFile(directoryPath, FileName, PathOfFile, dt);
             return zipBytes;
@@ -60,10 +61,15 @@ namespace Hangfire.Business
             new ZipWriterManager().FileDirectoryPath(directoryPath, FileName);
 
             System.IO.DirectoryInfo di = new DirectoryInfo(directoryPath);
-
+            var date = DateTime.Now;
             foreach (FileInfo file in di.GetFiles())
             {
-                file.Delete();
+                var lastmodified = Convert.ToDateTime(file.LastWriteTime.ToShortDateString());
+                var currDate = Convert.ToDateTime(DateTime.Now.ToShortDateString());
+                if (lastmodified < currDate)
+                {
+                    file.Delete();
+                }
             }
             StringBuilder sb = new StringBuilder();
 

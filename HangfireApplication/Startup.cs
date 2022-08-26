@@ -26,11 +26,11 @@ namespace HangfireApplication
             //LogProvider.SetCurrentLogProvider(new DummyLogProviderHangfire());
             //GlobalJobFilters.Filters.Add(new ShortExpirationTimeAttribute());
             GlobalJobFilters.Filters.Add(new AutomaticRetryAttribute { Attempts = 0 });
-            if (ConfigurationManager.AppSettings["LiveEmailEnvironment"] == "0")
-            {
+            //if (ConfigurationManager.AppSettings["LiveEmailEnvironment"] == "0")
+            //{
                 app.UseHangfireServer();
                 RecurringJobs.RegisterRecurringJobs(1);
-            }
+            //}
         }
     }
 

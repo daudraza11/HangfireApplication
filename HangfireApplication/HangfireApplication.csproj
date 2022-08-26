@@ -200,6 +200,14 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{CA0ACB6A-A00D-4080-A05B-00F4DD4B7BCE}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hangfire.Business\Hangfire.Business.csproj">
+      <Project>{90F05E5E-9D71-43F9-A294-9B800201EBAC}</Project>
+      <Name>Hangfire.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Hangfire.JobsTrigger\Hangfire.JobsTrigger.csproj">
       <Project>{A1167008-1D1D-481F-B43A-02665F7028DA}</Project>
       <Name>Hangfire.JobsTrigger</Name>

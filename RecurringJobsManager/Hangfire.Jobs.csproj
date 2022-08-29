@@ -46,6 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{CA0ACB6A-A00D-4080-A05B-00F4DD4B7BCE}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Hangfire.Business\Hangfire.Business.csproj">
       <Project>{90F05E5E-9D71-43F9-A294-9B800201EBAC}</Project>
       <Name>Hangfire.Business</Name>

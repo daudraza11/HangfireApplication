@@ -1,4 +1,5 @@
-﻿using Hangfire.Business;
+﻿using Common;
+using Hangfire.Business;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -22,6 +23,7 @@ namespace Hangfire.Jobs
                 new ReportBE().GetCustomersV1Data();
                 new ReportBE().GetCustomersV3Data();
                 new ReportBE().GetCustomersV4Data();
+                new FileUploadSFTP().FileUploadSFTPServer();
             }
             catch (Exception ex)
             {

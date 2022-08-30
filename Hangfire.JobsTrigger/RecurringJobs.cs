@@ -15,8 +15,6 @@ namespace Hangfire.JobsTrigger
     {
         static readonly Dictionary<string, Expression<Action>> RegisteredJobs = new Dictionary<string, Expression<Action>>()
         {
-            {JobCodes.RefreshRecurringJobs,() => new RecurringJobs().RefreshRecurringJobs()},
-            {JobCodes.PushDirectDebitTransactions, () => new RecurringJobsManager().PushDirectDebitTransactions()},
             {JobCodes.GenerateBIMAReportFiles,()=>new RecurringJobsManager().GenerateBimaFiles() }
         };
 

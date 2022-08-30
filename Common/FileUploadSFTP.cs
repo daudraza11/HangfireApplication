@@ -1,6 +1,7 @@
 ﻿using Renci.SshNet;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -15,20 +16,20 @@ namespace Common
     {
         public void FileUploadSFTPServer()
         {
-            var host = "192.168.30.47";
-            var port = 2222;
-            var username = "tester";
-            var password = "password";
+            var host = ConfigurationManager.AppSettings["Host"];
+            var port = Convert.ToInt32(ConfigurationManager.AppSettings["Port"]);
+            var username = ConfigurationManager.AppSettings["Username"];
+            var password = ConfigurationManager.AppSettings["Password"];
 
             SftpClient client = new SftpClient(host, port, username, password);
             client.Connect();
-            
+
             string localDirectory = HostingEnvironment.MapPath(("~/Contents/BIMAFile/"));
 
             string[] files = Directory.GetFiles(localDirectory);
             foreach (string file in files)
             {
-                using (Stream inputStream = new FileStream(file,FileMode.Open))
+                using (Stream inputStream = new FileStream(file, FileMode.Open))
                 {
                     client.UploadFile(inputStream, Path.GetFileName(file));
                 }

@@ -3,19 +3,17 @@ using Hangfire.Business;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Hosting;
 
 namespace Hangfire.Jobs
 {
     public class RecurringJobsManager
     {
-        public void PushDirectDebitTransactions()
-        {
-            //var jobs = new InterpayAfricaJobs();
-            //jobs.PushDirectDebitTransactions();
-        }
+
         public void GenerateBimaFiles()
         {
             try
@@ -23,10 +21,20 @@ namespace Hangfire.Jobs
                 new ReportBE().GetCustomersV1Data();
                 new ReportBE().GetCustomersV3Data();
                 new ReportBE().GetCustomersV4Data();
-                new FileUploadSFTP().FileUploadSFTPServer();
+                string localDirectory = HostingEnvironment.MapPath(("~/Contents/BIMAFile/"));
+
+                string[] files = Directory.GetFiles(localDirectory);
+                if (files.Length > 0)
+                {
+                    new FileUploadSFTP().FileUploadSFTPServer();
+                }
             }
             catch (Exception ex)
             {
+                //Logger.LogAPIException(ApiName, FuncName, response, e, TransID, TransRef);
+
+                //Logger.LogErrorMessage(ex.Message,eErrorLogTypes.SATFFileUpload,"Hangfire BIMA",eLogCallSource.hangfireBIMASatf);
+                //Logger.LogException(ex);
                 throw ex;
             }
         }

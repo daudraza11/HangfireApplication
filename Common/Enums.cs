@@ -6,17 +6,13 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    public enum eSystemConfigEntry : int
+    public enum eLogCallSource
     {
-        //====== IpayLog Configs
-        EID_AccessBank = 1,
-        EID_UPSA = 2,
-        EID_Regent = 3,
-        LogPaymentPath = 148,
-        LogServicePath = 149,
-        LogServiceUser = 150,
-        LogServicePass = 151,
-        LogServiceInstance = 161,
+        hangfireBIMASatf,
+    }
+    public enum eErrorLogTypes
+    {
+        SATFFileUpload
     }
 
 }

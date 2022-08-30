@@ -13,23 +13,19 @@ namespace HangfireApplication
     {
         public void Configuration(IAppBuilder app)
         {
-            if (ConfigurationManager.AppSettings["HangfireType"] == "R")
+            GlobalConfiguration.Configuration.UseRedisStorage(ConfigurationManager.ConnectionStrings["HangfireRedis"].ConnectionString);
+            var options = new BackgroundJobServerOptions
             {
-                GlobalConfiguration.Configuration.UseRedisStorage(ConfigurationManager.ConnectionStrings["HangfireRedis"].ConnectionString);
-            }
-            else
-            {
-                GlobalConfiguration.Configuration.UseSqlServerStorage("MailerDb");
-            }
-
+                ServerName = "Hangfire Server"
+            };
+            app.UseHangfireServer(options);
             app.UseHangfireDashboard();
-            //LogProvider.SetCurrentLogProvider(new DummyLogProviderHangfire());
-            //GlobalJobFilters.Filters.Add(new ShortExpirationTimeAttribute());
+            
             GlobalJobFilters.Filters.Add(new AutomaticRetryAttribute { Attempts = 0 });
             //if (ConfigurationManager.AppSettings["LiveEmailEnvironment"] == "0")
             //{
-                app.UseHangfireServer();
-                RecurringJobs.RegisterRecurringJobs(1);
+            app.UseHangfireServer();
+            RecurringJobs.RegisterRecurringJobs(1);
             //}
         }
     }

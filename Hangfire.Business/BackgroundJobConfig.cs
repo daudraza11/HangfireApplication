@@ -53,11 +53,6 @@ namespace Hangfire.Business
 
     public class JobCodes
     {
-        public const string RefreshRecurringJobs = "REFRESH_RECURRING_JOBS";
-        public const string UsisApi = "USIS_API";
-        public const string PushInterpayTransactions = "PUSH_INTERPAY_TRANSACTIONS";
-        public const string PushDirectDebitTransactions = "PUSH_DIRECT_DEBIT_TRANSACTIONS";
-        public const string PushAccessBankTransfer = "PUSH_ACCESS_BANK_TRANSFERS"; 
         public const string GenerateBIMAReportFiles = "GENERATE_BIMA_REPORT_FILES"; 
 
     }

@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="FileUploadSFTP.cs" />
     <Compile Include="Logger.cs" />
@@ -64,6 +65,10 @@
     <Compile Include="ZipWriterManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Hangfire.DAL\Hangfire.DAL.csproj">
+      <Project>{587C67B9-DC8D-4265-B028-A7A9FD8D6AA8}</Project>
+      <Name>Hangfire.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Hnagfire.Model\Hnagfire.Model.csproj">
       <Project>{5CCD0113-E8E2-44AD-AB65-706D0C93563F}</Project>
       <Name>Hnagfire.Model</Name>

@@ -31,10 +31,7 @@ namespace Hangfire.Jobs
             }
             catch (Exception ex)
             {
-                //Logger.LogAPIException(ApiName, FuncName, response, e, TransID, TransRef);
-
-                //Logger.LogErrorMessage(ex.Message,eErrorLogTypes.SATFFileUpload,"Hangfire BIMA",eLogCallSource.hangfireBIMASatf);
-                //Logger.LogException(ex);
+                Logger.LogErrorMessage("HangfireBIMASatf", "SATFFileUpload",ex.Message, "SATFFileUpload", "0", "0");
                 throw ex;
             }
         }
